@@ -1,0 +1,25 @@
+{% extends "BAP/base.html" %}
+{% block title %}BOOKS AUTHORS AND PUBLISHERS Application{% endblock %}
+{% block content %}
+    <table style="width:100%">
+        <caption><h1>Authors</h1></caption>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>EMail</th>
+        </tr>
+        {% for author in object_list %}
+            <tr>
+                <td>
+                    <a href="{{ author.get_absolute_url }}">
+                        {{ author.pk }}
+                    </a>
+                </td>
+                <td><b>{{ author.salutation }}.{{ author.name }}</b></td>
+                <td>{{ author.email }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

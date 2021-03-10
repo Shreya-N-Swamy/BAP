@@ -1,0 +1,43 @@
+{% extends "BAP/base.html" %}
+{% load static %}
+{% block title %}BOOKS AUTHORS AND PUBLISHERS Application{% endblock %}
+{% block content %}
+    <p>
+        <h1>{{ author.salutation }}{{ author.name }}</h1>
+        <img src="{{author.dp.url}}" alt="author pic"/>
+    </p>
+
+    <p>
+        Contact {{author.name}}
+        <a href="{% url 'BAP:sendAuthorMail' author.id %}">
+            {{ author.email }}
+        </a>
+    </p>
+    <p>
+        <img src="{% static 'icons/emailIcon.png'%}" alt="Email pic"/>
+        <a href="{% url 'BAP:shareAuthorViaEmail' author.id %}">
+            Share {{author.name}}'s link
+        </a>
+    </p>
+    <table style="width:100%">
+        <caption><h1>BOOKS</h1></caption>
+        {% for book in author.BookAuthors.all %}
+            <tr>
+                <td>
+                    {{ book}}
+                </td>
+                <td>
+                    {{ book.genre}}
+                </td>
+                <td>
+                    {{ book.publisher}}
+                </td>
+                <td>
+                    <img height="80" width="120" src="{{book.cover_pic.url}}" alt="Book pic"/>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

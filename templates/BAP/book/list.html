@@ -1,0 +1,35 @@
+{% extends "BAP/base.html" %}
+{% block title %}BOOKS AUTHORS AND PUBLISHERS Application{% endblock %}
+{% block content %}
+    <table style="width:100%">
+        <caption><h1>Table of Books</h1></caption>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Authors</th>
+            <th>Publisher</th>
+            <th>Published on</th>
+        </tr>
+        {% for book in object_list %}
+            <tr>
+                <td>
+                    <a href="{{ book.get_absolute_url }}">
+                        {{ book.pk }}
+                    </a>
+                </td>
+                <td><b>{{ book.title }}</b></td>
+                <td>{{ book.genre }}</td>
+                <td>
+                    {% for author in BookAuthors %}
+                        {{ author.name }}
+                    {% endfor %}
+                </td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.publication_date }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+        
+
+{% endblock %}

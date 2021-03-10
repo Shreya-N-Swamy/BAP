@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+			table, th, td {
+  				border: 1px solid black;
+  				border-collapse: collapse;
+			}
+			th, td {
+  				padding: 5px;
+			}
+			table tr:nth-child(even) {
+				background-color: #eee;
+			}
+			table tr:nth-child(odd) {
+				background-color: #fff;
+			}
+			table th {
+				background-color: black;
+				color: white;
+			}
+			.noBorder {
+			    border-style: none;;
+			}
+			.center {
+                margin: auto;
+                width: 100%;
+                border: 0px solid green;
+                padding: 10px;
+            }
+            .header {
+                background-color: #f1f1f1;
+                padding: 20px;
+                text-align: center;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+            .grid-item {
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+
+    </style>
+</head>
+<body>
+    <header class="grid-container">
+        <a href="{% url 'BAP:home'%}">
+            <img src="{% static 'icons/home.png'%}" alt="home pic"/>
+        </a>
+        <h1>Books Authors Publishers App</h1>
+    </header>
+    <div id="content" style="margin-top:100px">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

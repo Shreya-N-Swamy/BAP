@@ -1,0 +1,17 @@
+{% extends "BAP/base.html" %}
+{% block title %}Share this page{% endblock %}
+{% block content %}
+    {% if sent %}
+        <h1>E-mail successfully sent</h1>
+        <p>
+            "{{ obj }}" was successfully sent to {{ cd.toEmail }}.
+        </p>
+    {% else %}
+        <h1>Share "{{ obj }}" by e-mail</h1>
+        <form action="." method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" value="Send e-mail">
+        </form>
+    {% endif %}
+{% endblock %}
